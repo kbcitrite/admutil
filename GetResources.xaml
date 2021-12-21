@@ -1,0 +1,31 @@
+﻿<Window x:Class="ADMUtil.GetResources"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ADMUtil"
+        mc:Ignorable="d"
+        Title="Get ADC Resources:" Height="400" Width="400" Background="Black" ResizeMode="NoResize">
+    <Grid>
+        <ListView x:Name="ADCList" ItemContainerStyle="{StaticResource ListViewItemOptionStyle}" Background="Black" Foreground="White" HorizontalAlignment="Left" Height="208" Margin="12,36,0,0" VerticalAlignment="Top" Width="174" DataContext="{Binding}"  >
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="GroupList" ItemContainerStyle="{StaticResource ListViewItemOptionStyle}" Background="Black" Foreground="White" HorizontalAlignment="Left" Height="208" Margin="195,36,0,0" VerticalAlignment="Top" Width="174" DataContext="{Binding}">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Instances:" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Foreground="White" Width="174"/>
+        <Label Content="Instance Groups:" HorizontalAlignment="Left" Margin="195,10,0,0" VerticalAlignment="Top" Foreground="White" Width="174"/>
+        <Label Content="Resources (Comma-separated):" HorizontalAlignment="Left" Margin="12,251,0,0" VerticalAlignment="Top" Foreground="White" Width="357"/>
+        <TextBox x:Name="NitroObjects" HorizontalAlignment="Left" Height="23" Margin="12,282,0,0" TextWrapping="Wrap" Text="vpnvserver,vpnsessionaction" VerticalAlignment="Top" Width="238"/>
+        <Button Content="_Cancel" HorizontalAlignment="Left" Margin="265,320,0,0" VerticalAlignment="Top" Width="104" Click="Exit_Click" IsCancel="True"/>
+        <Button Content="_Get Resources" HorizontalAlignment="Left" Margin="265,282,0,0" VerticalAlignment="Top" Width="104" Click="GetResources_Click" IsDefault="True"/>
+    </Grid>
+</Window>
