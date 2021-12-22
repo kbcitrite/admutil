@@ -1,0 +1,7 @@
+admutil/bin
+admutil/obj
+admutil/packages
+admutil/.vs
+admutil/.vscode
+MainTest/bin
+MainTest/obj

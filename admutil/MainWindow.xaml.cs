@@ -8,15 +8,15 @@ using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.Script.Serialization;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -267,9 +267,8 @@ namespace ADMUtil
                             password = Globals.ADMPass
                         }
                     }
-                    };
-                    JavaScriptSerializer javascriptSerializer = new JavaScriptSerializer();
-                    string json = "object=" + javascriptSerializer.Serialize(LoginPayload);
+                    };                    
+                    string json = "object=" + JsonSerializer.Serialize(LoginPayload);
                     using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                     {
                         streamWriter.Write(json);
@@ -526,9 +525,8 @@ namespace ADMUtil
                     {
                         httpClient.DefaultRequestHeaders.Add("_MPS_API_PROXY_MANAGED_INSTANCE_IP", ADCIP);
                     }
-                    var response = httpClient.GetStringAsync(new Uri(url)).Result;
-                    var jss = new JavaScriptSerializer();
-                    return jss.Deserialize<Dictionary<string, dynamic>>(response);
+                    var response = httpClient.GetStringAsync(new Uri(url)).Result;                    
+                    return JsonSerializer.Deserialize<Dictionary<string, dynamic>>(response);
                 }
             }
             catch (Exception e)
